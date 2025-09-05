@@ -2,6 +2,9 @@ import pytest
 import sys
 import os
 
+# Définir l'environnement de test avant d'importer l'app
+os.environ['FLASK_ENV'] = 'testing'
+
 # Ajouter le répertoire parent au path pour importer l'app
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
