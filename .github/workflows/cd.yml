@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        service: [backend, frontend, ai-service]
+        service: [Backend, Frontend, AI-Service]
 
     steps:
       - name: Checkout code
