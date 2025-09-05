@@ -5,12 +5,9 @@ import {
   CheckCircle, 
   X, 
   Clock, 
-  User, 
   MapPin, 
-  Calendar,
   Truck,
   Users,
-  AlertCircle,
   Download,
   Send
 } from 'lucide-react';

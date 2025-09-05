@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Lightbulb, 
   Wrench, 
   Clock, 
-  Star, 
   Heart, 
   Share2, 
   Download, 
-  BookOpen,
-  Scissors,
-  Palette,
-  Hammer,
   Zap,
   Leaf,
   X,
   ChevronRight,
-  ChevronDown,
   Play,
   Pause,
   RotateCcw
