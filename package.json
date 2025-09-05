@@ -1,0 +1,19 @@
+{
+  "name": "ecoshare",
+  "version": "1.0.0",
+  "description": "Plateforme de partage d'objets et d'aliments pour promouvoir la durabilité",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd Backend && npm run dev",
+    "client": "cd Frontend && npm start",
+    "install-all": "npm install && cd Backend && npm install && cd ../Frontend && npm install",
+    "build": "cd Frontend && npm run build"
+  },
+  "keywords": ["sustainability", "sharing", "community", "eco-friendly"],
+  "author": "ECOSHARE Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

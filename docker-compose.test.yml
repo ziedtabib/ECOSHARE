@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Base de données de test
+  mongodb-test:
+    image: mongo:6.0
+    container_name: ecoshare-mongodb-test
+    environment:
+      MONGO_INITDB_DATABASE: ecoshare_test
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./Backend/scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
+  # Tests Backend
+  backend-test:
+    build: 
+      context: ./Backend
+      dockerfile: Dockerfile.test
+    container_name: ecoshare-backend-test
+    environment:
+      NODE_ENV: test
+      MONGODB_URI: mongodb://mongodb-test:27017/ecoshare_test
+    depends_on:
+      - mongodb-test
+    command: ["npm", "test"]
+
+  # Tests Frontend
+  frontend-test:
+    build: 
+      context: ./Frontend
+      dockerfile: Dockerfile.test
+    container_name: ecoshare-frontend-test
+    command: ["npm", "test", "--", "--coverage", "--watchAll=false"]
+
+  # Tests AI Service
+  ai-service-test:
+    build: 
+      context: ./AI-Service
+      dockerfile: Dockerfile.test
+    container_name: ecoshare-ai-test
+    environment:
+      FLASK_ENV: test
+    command: ["pytest", "tests/", "--cov=.", "--cov-report=xml"]
+
+  # Tests d'intégration
+  integration-test:
+    build: 
+      context: .
+      dockerfile: Dockerfile.integration
+    container_name: ecoshare-integration-test
+    environment:
+      MONGODB_URI: mongodb://mongodb-test:27017/ecoshare_test
+    depends_on:
+      - mongodb-test
+      - backend-test
+      - frontend-test
+      - ai-service-test
+    command: ["./run-integration-tests.sh"]
