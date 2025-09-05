@@ -6,12 +6,13 @@ WORKDIR /app
 
 # Installer les dépendances système
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
     libglib2.0-0 \
     libsm6 \
     libxext6 \
     libxrender-dev \
     libgomp1 \
+    libglib2.0-dev \
+    libgl1-mesa-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Copier les fichiers de dépendances
