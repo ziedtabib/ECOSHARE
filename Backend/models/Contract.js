@@ -131,7 +131,7 @@ const contractSchema = new mongoose.Schema({
 });
 
 // Index pour les recherches
-contractSchema.index({ contractId: 1 });
+// contractId index is automatically created by unique: true
 contractSchema.index({ owner: 1, status: 1 });
 contractSchema.index({ receiver: 1, status: 1 });
 contractSchema.index({ item: 1, itemType: 1 });

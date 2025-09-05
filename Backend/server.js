@@ -96,3 +96,6 @@ server.listen(PORT, () => {
   console.log(`📱 Frontend URL: ${process.env.FRONTEND_URL || 'http://localhost:3000'}`);
   console.log(`💬 Socket.io activé pour le chat en temps réel`);
 });
+
+// Export both app and server for testing
+module.exports = { app, server };
